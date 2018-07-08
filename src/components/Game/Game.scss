@@ -1,0 +1,54 @@
+.title {
+   color: red;
+}
+
+.playerContainer {
+   display: grid;
+   grid-template-columns: 1fr 1fr;
+   grid-template-rows: 4fr 3fr 3fr;
+   grid-template-areas:
+      "playerTitle playerTitle"
+      "undertakenTitle hitsTitle"
+      "undertaken hits";
+   grid-gap: 0.5rem;
+   margin: 2rem 0;
+}
+
+.playerTitle {
+   grid-area: playerTitle;
+   display: flex;
+   text-align: left;
+   font-weight: bold;
+}
+
+.playerName {
+   flex-grow: 1;
+}
+
+.undertakenTitle {
+   grid-area: undertakenTitle;
+   text-align: left;
+}
+
+.hitsTitle {
+   grid-area: hitsTitle;
+   text-align: right;
+}
+
+.undertaken {
+   grid-area: undertaken;
+   text-align: left;
+}
+
+.hits {
+   grid-area: hits;
+   text-align: right;
+}
+
+.inputBox {
+   width: 100%;
+}
+
+.error {
+   color: red;
+}
