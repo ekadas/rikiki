@@ -1,11 +1,11 @@
 import { applyMiddleware, compose, createStore } from 'redux'
-import { createBrowserHistory } from 'history'
+import { createHashHistory as createHistory } from 'history'
 import { connectRouter, routerMiddleware } from 'connected-react-router/immutable'
 import Thunk from 'redux-thunk'
 
 import rootReducer from './reducers'
 
-const history = createBrowserHistory()
+const history = createHistory()
 const middleware = routerMiddleware(history)
 
 const store = createStore(
