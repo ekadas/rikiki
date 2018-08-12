@@ -1,0 +1,26 @@
+body {
+   font-family: 'Open Sans', sans-serif;
+}
+
+button {
+   padding: 0.5rem;
+   border-radius: 4px;
+   cursor: pointer;
+   border: none;
+}
+
+input {
+   border: none;
+   border-bottom: solid 1px grey;
+   padding: 0.5rem 0;
+}
+
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+}
+
+input[type=number] {
+   -moz-appearance: textfield;
+}

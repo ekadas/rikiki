@@ -29,7 +29,7 @@ class NewGame extends React.Component {
   onPlayerChange (index, { target }) {
     let players = this.state.players
 
-    players[index] = target.value
+    players[index] = target.value.toLowerCase()
 
     if (this.state.players.length - 1 === index) {
       players.push('')

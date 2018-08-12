@@ -19,27 +19,17 @@
    margin-top: 1rem;
 }
 
-.button {
-   padding: 0.5rem;
-   border-radius: 4px;
-   cursor: pointer;
-   border: none;
-}
-
 .cancelButton {
-   @extend .button;
    float: left;
 }
 
 .submitButton {
-   @extend .button;
    float: right;
    color: white;
    background-color: green;
 }
 
 .submitButton:disabled {
-   @extend .button;
    float: right;
    color: white;
    background-color: grey;
