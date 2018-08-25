@@ -1,5 +1,8 @@
+@import '../../colors';
+@import '../../_mixins';
+
 .title {
-   color: red;
+   color: $secondary;
 }
 
 .playerContainer {
@@ -51,4 +54,8 @@
 
 .error {
    color: red;
+}
+
+.submitButton {
+   @include primary-button;
 }

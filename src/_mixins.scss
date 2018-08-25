@@ -1,0 +1,33 @@
+@mixin button($color, $background-color) {
+   color: $color;
+   background-color: $background-color;
+   padding: 0.5rem;
+   border-radius: 4px;
+   cursor: pointer;
+   border: none;
+   font-size: inherit;
+
+   &:hover {
+      color: $color;
+      background-color: darken($background-color, 10%);
+   }
+
+   &:disabled {
+      cursor: not-allowed;
+      background-color: $disabled;
+      color: $background;
+
+      &:hover {
+         background-color: $disabled;
+         color: $background;
+      }
+   }
+}
+
+@mixin primary-button {
+   @include button($secondary, $background-secondary)
+}
+
+@mixin secondary-button {
+   @include button($secondary, $background)
+}

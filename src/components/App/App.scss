@@ -1,3 +1,6 @@
+@import '../../colors';
+@import '../../_mixins';
+
 .App {
    max-width: 400px;
    margin: 0 auto;
@@ -6,5 +9,9 @@
 }
 
 .title {
-   color: red;
+   color: $secondary;
+}
+
+.newGame {
+   @include secondary-button;
 }

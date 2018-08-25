@@ -138,7 +138,8 @@ class Game extends React.Component {
           <button
             type='submit'
             onClick={this.onSubmit}
-            disabled={!this.allPlayersActed()}>
+            className={style.submitButton}
+            disabled={!this.allPlayersActed() || this.state.error}>
             Submit {this.props.latestActiveRound === null ? 'Undertaken' : 'Hits'}
           </button>
         </form>

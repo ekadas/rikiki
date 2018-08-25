@@ -19,7 +19,11 @@ class App extends React.Component {
         <Switch>
           <Route exact path='/' component={(props) => (
             <div>
-              <Link to='/new-game'>New Game</Link>
+              <Link
+                className={style.newGame}
+                to='/new-game'>
+                New Game
+              </Link>
               {this.props.gameActive
                   ? (<Game />)
                   : <h1 className={style.title}>Rikiki</h1>}

@@ -1,5 +1,8 @@
+@import '../../colors';
+@import '../../_mixins';
+
 .title {
-   color: green;
+   color: $secondary;
 }
 
 .input {
@@ -21,18 +24,12 @@
 
 .cancelButton {
    float: left;
+   @include secondary-button;
 }
 
 .submitButton {
    float: right;
-   color: white;
-   background-color: green;
-}
-
-.submitButton:disabled {
-   float: right;
-   color: white;
-   background-color: grey;
+   @include primary-button;
 }
 
 .error {
