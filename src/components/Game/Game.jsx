@@ -148,14 +148,14 @@ class Game extends React.Component {
             onClick={this.resetRound}
             className={classNames(style.resetRound, style.left)}
             disabled={this.state.playerAction === Map() && this.props.latestActiveRound === null}>
-            Reset Round
+            Reset
           </button>
           <button
             type='submit'
             onClick={this.onSubmit}
             className={classNames(style.submitButton, style.right)}
             disabled={!this.allPlayersActed() || this.state.error}>
-            Submit {this.props.latestActiveRound === null ? 'Undertaken' : 'Hits'}
+            Submit
           </button>
         </form>
       </div>
