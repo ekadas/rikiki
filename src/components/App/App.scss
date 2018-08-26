@@ -9,10 +9,37 @@
    padding: $primarySpacing;
 }
 
-.title {
-   color: $secondary;
+.navigation {
+   text-align: right;
 }
 
-.newGame {
-   @include secondary-button;
+.disabledNavItem {
+   color: $disabled;
+   margin: $primarySpacing;
+}
+
+.navItem {
+   color: $text;
+   margin: $primarySpacing;
+   border-bottom: 0px solid $secondary;
+   transition: 0.2s ease;
+   position: relative;
+
+   &:before {
+      content: "";
+      position: absolute;
+      width: 100%;
+      height: 2px;
+      bottom: 0;
+      left: 0;
+      background-color: $secondary;
+      visibility: hidden;
+      transform: scaleX(0);
+      transition: all 0.2s ease-in-out 0s;
+   }
+
+   &:hover:before {
+      visibility: visible;
+      transform: scaleX(1)
+   }
 }

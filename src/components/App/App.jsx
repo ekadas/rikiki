@@ -1,11 +1,18 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Route, Link, Switch, withRouter } from 'react-router-dom'
+import {
+  Route,
+  Link,
+  Switch,
+  withRouter,
+  Redirect
+} from 'react-router-dom'
 import { connect } from 'react-redux'
 
 import { getGameActive } from '../../state/selectors'
 import NewGame from '../NewGame'
 import Game from '../Game'
+import Rules from '../Rules'
 import style from './App.scss'
 
 class App extends React.Component {
@@ -13,23 +20,31 @@ class App extends React.Component {
     console.log(error, info)
   }
 
+  renderNavItem (to, text, disabled = false) {
+    const pathname = this.props.location.pathname
+    if (disabled || to === pathname) {
+      return <span className={style.disabledNavItem}>{text}</span>
+    }
+    return <Link to={to} className={style.navItem}>{text}</Link>
+  }
+
   render () {
     return (
       <div className={style.App}>
+        <nav className={style.navigation}>
+          {this.renderNavItem('/', 'Scores', !this.props.gameActive)}
+          {this.renderNavItem('/rules', 'Rules')}
+          {this.renderNavItem('/new-game', 'New Game')}
+        </nav>
         <Switch>
-          <Route exact path='/' component={(props) => (
-            <div>
-              <Link
-                className={style.newGame}
-                to='/new-game'>
-                New Game
-              </Link>
-              {this.props.gameActive
-                ? (<Game />)
-                : <h1 className={style.title}>Rikiki</h1>}
-            </div>
-          )} />
           <Route exact path='/new-game' component={NewGame} />
+          <Route exact path='/rules' component={Rules} />
+          <Route exct path='/'
+            render={props =>
+              this.props.gameActive
+                ? <Game />
+                : <Redirect to={{ pathname: '/rules' }} />
+            } />
         </Switch>
       </div>
     )
