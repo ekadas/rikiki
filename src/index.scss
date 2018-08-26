@@ -1,4 +1,5 @@
 @import './colors';
+@import './dimensions';
 
 body {
    font-family: 'Open Sans', sans-serif;
@@ -9,8 +10,8 @@ body {
 
 input {
    border: none;
-   border-bottom: solid 1px grey;
-   padding: 0.5rem 0;
+   border-bottom: solid 1px $disabled;
+   padding: $primarySpacing 0;
    color: $text;
    font-size: inherit;
 }

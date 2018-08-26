@@ -78,18 +78,22 @@ class NewGame extends React.Component {
     return (
       <form onSubmit={this.onSubmit} className={style.NewGame}>
         <h1 className={style.title}>New Game</h1>
-        <h3>Max Cards</h3>
-        <input
-          name='maxCards'
-          type='number'
-          value={this.state.maxCards}
-          className={style.roundsInput}
-          onChange={this.onMaxCardsChange} />
-        <h3>Players</h3>
-        <div className={style.error}>
-          {this.state.error}
+        <div className={style.container}>
+          <h3>Max Cards</h3>
+          <input
+            name='maxCards'
+            type='number'
+            value={this.state.maxCards}
+            className={style.roundsInput}
+            onChange={this.onMaxCardsChange} />
         </div>
-        {this.renderPlayers()}
+        <div className={style.container}>
+          <h3>Players</h3>
+          <div className={style.error}>
+            {this.state.error}
+          </div>
+          {this.renderPlayers()}
+        </div>
         <div className={style.actions}>
           <button
             type='button'

@@ -3,6 +3,7 @@ import ImmutablePropTypes from 'react-immutable-proptypes'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { Map, List } from 'immutable'
+import classNames from 'classnames'
 
 import {
   getLatestActiveRound,
@@ -35,13 +36,14 @@ class Game extends React.Component {
     })
   }
 
-  renderActionInput (player, placeholder, autoFocus) {
+  renderActionInput (player, autoFocus, undertake) {
+    const placeholder = undertake ? 'To undertake' : 'Hits'
     return (
       <input
         autoFocus={autoFocus}
         name='player action'
         type='number'
-        className={style.inputBox}
+        className={classNames(style.inputBox, undertake ? style.left : style.right)}
         placeholder={placeholder}
         value={this.state.playerAction.get(player, '')}
         required
@@ -53,33 +55,27 @@ class Game extends React.Component {
     return this.props.players.map(player => {
       const autoFocus = player === this.props.players.first()
       const undertaken = this.props.latestActiveRound === null
-        ? this.renderActionInput(player, 'To undertake', autoFocus)
+        ? this.renderActionInput(player, autoFocus, true)
         : this.props.latestActiveRound.get(player)
 
       const hits = this.props.latestActiveRound !== null
-        ? this.renderActionInput(player, 'Hits', autoFocus)
+        ? this.renderActionInput(player, autoFocus, false)
         : null
 
       return (
         <div className={style.playerContainer} key={player}>
-          <div className={style.playerTitle}>
+          <div className={classNames(style.playerTitle, style.left)}>
             <div className={style.playerName}>
               {player}
             </div>
-            <div className={style.playerPoints}>
+            <div className={classNames(style.playerPoints, style.right)}>
               {this.props.totalPoints.get(player)}
             </div>
           </div>
-          <div className={style.undertakenTitle}>
-            Undertaken
-          </div>
-          <div className={style.hitsTitle}>
-            Hits
-          </div>
-          <div className={style.undertaken}>
+          <div className={classNames(style.undertaken, style.left)}>
             {undertaken}
           </div>
-          <div className={style.hits}>
+          <div className={classNames(style.hits, style.right)}>
             {hits}
           </div>
         </div>

@@ -1,0 +1,7 @@
+$baseUnit: 0.5rem;
+
+@function units($value) {
+   @return $value * $baseUnit;
+}
+
+$primarySpacing: units(1);

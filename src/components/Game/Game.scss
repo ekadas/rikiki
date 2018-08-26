@@ -1,4 +1,5 @@
 @import '../../colors';
+@import '../../dimensions';
 @import '../../_mixins';
 
 .title {
@@ -8,44 +9,40 @@
 .playerContainer {
    display: grid;
    grid-template-columns: 1fr 1fr;
-   grid-template-rows: 4fr 3fr 3fr;
+   grid-template-rows: auto;
    grid-template-areas:
       "playerTitle playerTitle"
-      "undertakenTitle hitsTitle"
       "undertaken hits";
-   grid-gap: 0.5rem;
-   margin: 2rem 0;
+   grid-gap: $primarySpacing;
+   margin: units(4) 0;
+   padding-bottom: 3 * $primarySpacing;
+}
+
+.left {
+   text-align: left;
+}
+
+.right {
+   text-align: right;
 }
 
 .playerTitle {
    grid-area: playerTitle;
    display: flex;
-   text-align: left;
    font-weight: bold;
+   padding-bottom: $primarySpacing;
 }
 
 .playerName {
    flex-grow: 1;
 }
 
-.undertakenTitle {
-   grid-area: undertakenTitle;
-   text-align: left;
-}
-
-.hitsTitle {
-   grid-area: hitsTitle;
-   text-align: right;
-}
-
 .undertaken {
    grid-area: undertaken;
-   text-align: left;
 }
 
 .hits {
    grid-area: hits;
-   text-align: right;
 }
 
 .inputBox {
