@@ -143,20 +143,22 @@ class Game extends React.Component {
         </div>
         <form onSubmit={this.onSubmit}>
           {this.renderPlayers()}
-          <button
-            type='button'
-            onClick={this.resetRound}
-            className={classNames(style.resetRound, style.left)}
-            disabled={this.state.playerAction === Map() && this.props.latestActiveRound === null}>
-            Reset
-          </button>
-          <button
-            type='submit'
-            onClick={this.onSubmit}
-            className={classNames(style.submitButton, style.right)}
-            disabled={!this.allPlayersActed() || this.state.error}>
-            Submit
-          </button>
+          <div className={style.actions}>
+            <button
+              type='button'
+              onClick={this.resetRound}
+              className={classNames(style.resetRound, style.left)}
+              disabled={this.state.playerAction === Map() && this.props.latestActiveRound === null}>
+              Reset
+            </button>
+            <button
+              type='submit'
+              onClick={this.onSubmit}
+              className={classNames(style.submitButton, style.right)}
+              disabled={!this.allPlayersActed() || this.state.error}>
+              Submit
+            </button>
+          </div>
         </form>
       </div>
     )

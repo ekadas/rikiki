@@ -55,6 +55,11 @@
    color: red;
 }
 
+
+.actions {
+   padding-bottom: units(4);
+}
+
 .submitButton {
    @include primary-button;
 }
