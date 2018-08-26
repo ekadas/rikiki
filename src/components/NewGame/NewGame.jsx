@@ -2,14 +2,13 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import ImmutablePropTypes from 'react-immutable-proptypes'
 import { connect } from 'react-redux'
-import { fromJS } from 'immutable'
 
 import { setupGame } from '../../state/actions'
 import style from './NewGame.scss'
 
 class NewGame extends React.Component {
   constructor (props) {
-    super (props)
+    super(props)
 
     this.onMaxCardsChange = this.onMaxCardsChange.bind(this)
     this.onPlayerChange = this.onPlayerChange.bind(this)
@@ -45,7 +44,7 @@ class NewGame extends React.Component {
   onSubmit (e) {
     e.preventDefault()
 
-    const players = this.state.players.filter((player => player !== ''))
+    const players = this.state.players.filter(player => player !== '')
     if (this.duplicatePlayerNames(players)) {
       this.setState({error: 'Not allowed duplicate names'})
       return
@@ -60,18 +59,18 @@ class NewGame extends React.Component {
 
   renderPlayers () {
     return this.state.players.map((player, index) => {
-        return (
-          <div key={index}>
-            <input
-              name='player'
-              type='text'
-              value={player}
-              placeholder='player name'
-              className={style.playerInput}
-              onChange={this.onPlayerChange.bind(null, index)} />
-          </div>
-        )
-      })
+      return (
+        <div key={index}>
+          <input
+            name='player'
+            type='text'
+            value={player}
+            placeholder='player name'
+            className={style.playerInput}
+            onChange={this.onPlayerChange.bind(null, index)} />
+        </div>
+      )
+    })
   }
 
   render () {

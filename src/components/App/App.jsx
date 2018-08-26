@@ -25,8 +25,8 @@ class App extends React.Component {
                 New Game
               </Link>
               {this.props.gameActive
-                  ? (<Game />)
-                  : <h1 className={style.title}>Rikiki</h1>}
+                ? (<Game />)
+                : <h1 className={style.title}>Rikiki</h1>}
             </div>
           )} />
           <Route exact path='/new-game' component={NewGame} />

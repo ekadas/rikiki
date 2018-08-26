@@ -1,6 +1,5 @@
 import React from 'react'
 import ImmutablePropTypes from 'react-immutable-proptypes'
-import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { Map, List } from 'immutable'
 import classNames from 'classnames'
@@ -10,15 +9,20 @@ import {
   getCards,
   getTotalPoints
 } from '../../state/selectors'
-import { setHits, setUndertaken } from '../../state/actions'
+import {
+  setHits,
+  setUndertaken,
+  resetRound
+} from '../../state/actions'
 import style from './Game.scss'
 
 class Game extends React.Component {
   constructor (props) {
-    super (props)
+    super(props)
 
     this.onPlayerAction = this.onPlayerAction.bind(this)
     this.onSubmit = this.onSubmit.bind(this)
+    this.resetRound = this.resetRound.bind(this)
 
     this.state = {
       playerAction: Map(),
@@ -84,15 +88,23 @@ class Game extends React.Component {
   }
 
   allPlayersActed () {
-    return (this.props.players.equals(List(this.state.playerAction.keys())) && 
+    return (this.props.players.equals(List(this.state.playerAction.keys())) &&
       this.state.playerAction.every(action => !isNaN(action)))
+  }
+
+  resetRound () {
+    this.setState({ error: null, playerAction: Map() })
+
+    if (this.props.latestActiveRound !== null) {
+      this.props.resetRound()
+    }
   }
 
   onSubmit (e) {
     e.preventDefault()
 
     if (!this.allPlayersActed()) {
-      this.setState(error: 'Not all players acted!')
+      this.setState({ error: 'Not all players acted!' })
       return
     }
 
@@ -119,7 +131,7 @@ class Game extends React.Component {
       this.props.submitHits(this.state.playerAction)
     }
 
-    this.setState({ error: null, playerAction: Map()})
+    this.setState({ error: null, playerAction: Map() })
   }
 
   render () {
@@ -132,9 +144,16 @@ class Game extends React.Component {
         <form onSubmit={this.onSubmit}>
           {this.renderPlayers()}
           <button
+            type='button'
+            onClick={this.resetRound}
+            className={classNames(style.resetRound, style.left)}
+            disabled={this.state.playerAction === Map() && this.props.latestActiveRound === null}>
+            Reset Round
+          </button>
+          <button
             type='submit'
             onClick={this.onSubmit}
-            className={style.submitButton}
+            className={classNames(style.submitButton, style.right)}
             disabled={!this.allPlayersActed() || this.state.error}>
             Submit {this.props.latestActiveRound === null ? 'Undertaken' : 'Hits'}
           </button>
@@ -160,7 +179,8 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     submitHits: hits => dispatch(setHits(hits)),
-    submitUndertaken: undertaken => dispatch(setUndertaken(undertaken))
+    submitUndertaken: undertaken => dispatch(setUndertaken(undertaken)),
+    resetRound: () => dispatch(resetRound())
   }
 }
 

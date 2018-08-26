@@ -3,6 +3,7 @@ import {
   SET_PLAYERS,
   SET_HITS,
   SET_UNDERTAKEN,
+  RESET_ROUND,
   RESET_ROUNDS
 } from './reducers'
 
@@ -31,6 +32,12 @@ export function setUndertaken (undertaken) {
   return {
     type: SET_UNDERTAKEN,
     undertaken
+  }
+}
+
+export function resetRound () {
+  return {
+    type: RESET_ROUND
   }
 }
 

@@ -16,4 +16,8 @@ const store = createStore(
   )
 )
 
+store.subscribe(() => {
+  window.localStorage.setItem('rounds', JSON.stringify(store.getState().get('rounds')))
+})
+
 export { store, history }

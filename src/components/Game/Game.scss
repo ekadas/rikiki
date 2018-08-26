@@ -20,10 +20,12 @@
 
 .left {
    text-align: left;
+   float: left;
 }
 
 .right {
    text-align: right;
+   float: right;
 }
 
 .playerTitle {
@@ -55,4 +57,8 @@
 
 .submitButton {
    @include primary-button;
+}
+
+.resetRound {
+   @include secondary-button;
 }

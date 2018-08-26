@@ -11,6 +11,10 @@
       color: $color;
       background-color: darken($background-color, 10%);
    }
+}
+
+@mixin primary-button {
+   @include button($secondary, $background-secondary)
 
    &:disabled {
       cursor: not-allowed;
@@ -24,10 +28,17 @@
    }
 }
 
-@mixin primary-button {
-   @include button($secondary, $background-secondary)
-}
-
 @mixin secondary-button {
    @include button($secondary, $background)
+
+   &:disabled {
+      cursor: not-allowed;
+      background-color: $background;
+      color: $disabled;
+
+      &:hover {
+         background-color: $background;
+         color: $disabled;
+      }
+   }
 }

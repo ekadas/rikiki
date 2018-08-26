@@ -1,9 +1,9 @@
-const webpack = require('webpack')
+require('webpack')
 const HtmlWebPackPlugin = require('html-webpack-plugin')
 const path = require('path')
 
 module.exports = {
-  entry: "./src/index.js",
+  entry: './src/index.js',
   module: {
     rules: [
       {
@@ -43,7 +43,7 @@ module.exports = {
     new HtmlWebPackPlugin({
       template: './src/index.html',
       filename: './index.html'
-   })
+    })
   ],
   devtool: 'inline-source-map',
   devServer: {
