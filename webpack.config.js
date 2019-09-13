@@ -1,5 +1,6 @@
 require('webpack')
 const HtmlWebPackPlugin = require('html-webpack-plugin')
+const FaviconsWebpackPlugin = require('favicons-webpack-plugin')
 const path = require('path')
 
 module.exports = {
@@ -29,7 +30,7 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: 'bundle.js',
-    publicPath: ''
+    publicPath: './'
   },
   resolve: {
     alias: {
@@ -42,8 +43,13 @@ module.exports = {
   plugins: [
     new HtmlWebPackPlugin({
       template: './src/index.html',
-      filename: './index.html',
-      favicon: './favicon.svg'
+      filename: './index.html'
+    }),
+    new FaviconsWebpackPlugin({
+      logo: './favicon.svg',
+      favicons: {
+        start_url: ''
+      }
     })
   ],
   devtool: 'inline-source-map',
