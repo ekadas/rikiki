@@ -32,9 +32,9 @@ class App extends React.Component {
     return (
       <div className={style.App}>
         <nav className={style.navigation}>
-          {this.renderNavItem('/', 'Scores', !this.props.gameActive)}
           {this.renderNavItem('/rules', 'Rules')}
           {this.renderNavItem('/new-game', 'New Game')}
+          {this.renderNavItem('/', 'Scores', !this.props.gameActive)}
         </nav>
         <Switch>
           <Route exact path='/new-game' component={NewGame} />

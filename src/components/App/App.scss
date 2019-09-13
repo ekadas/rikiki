@@ -6,11 +6,14 @@
    max-width: units(80);
    margin: 0 auto;
    text-align: center;
-   padding: $primarySpacing;
+   padding: 0 $primarySpacing;
 }
 
 .navigation {
-   text-align: right;
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: $primarySpacing;
+  border-bottom: 1px solid $disabled;
 }
 
 .disabledNavItem {
