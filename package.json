@@ -2,7 +2,6 @@
   "name": "rikiki",
   "version": "1.0.0",
   "description": "",
-  "homepage": "https://ekadas.gitlab.io/rikiki",
   "main": "index.js",
   "scripts": {
     "start": "webpack-dev-server --open",
