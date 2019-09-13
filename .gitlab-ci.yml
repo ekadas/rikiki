@@ -1,3 +1,6 @@
+include:
+  template: Dependency-Scanning.gitlab-ci.yml
+
 image: node:8.6.0
 
 pages:
