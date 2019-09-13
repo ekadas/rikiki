@@ -1,7 +1,7 @@
 import React from 'react'
 import ImmutablePropTypes from 'react-immutable-proptypes'
 import { connect } from 'react-redux'
-import { Map, List } from 'immutable'
+import { Map, Set } from 'immutable'
 import classNames from 'classnames'
 
 import {
@@ -88,7 +88,7 @@ class Game extends React.Component {
   }
 
   allPlayersActed () {
-    return (this.props.players.equals(List(this.state.playerAction.keys())) &&
+    return (this.props.players.equals(Set(this.state.playerAction.keys())) &&
       this.state.playerAction.every(action => !isNaN(action)))
   }
 
@@ -166,7 +166,7 @@ class Game extends React.Component {
 }
 
 Game.propTypes = {
-  players: ImmutablePropTypes.list.isRequired
+  players: ImmutablePropTypes.set.isRequired
 }
 
 const mapStateToProps = state => {

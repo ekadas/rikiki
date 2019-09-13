@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux-immutable'
-import { List, Map, fromJS } from 'immutable'
+import { List, Map, Set, fromJS } from 'immutable'
 
 export const SET_MAX_CARDS = 'SET_MAX_CARDS'
 export const SET_PLAYERS = 'SET_PLAYERS'
@@ -14,7 +14,7 @@ const rounds = (state = initialRounds, action) => {
     case SET_HITS:
       return state.set(-1, state.last().set('hits', action.hits))
     case SET_UNDERTAKEN:
-      return state.push(Map({undertaken: action.undertaken}))
+      return state.push(Map({ undertaken: action.undertaken }))
     case RESET_ROUND:
       return state.delete(-1)
     case RESET_ROUNDS:
@@ -34,11 +34,11 @@ const maxCards = (state = initialMaxCards, action) => {
   }
 }
 
-const initialPlayers = List(JSON.parse(window.localStorage.getItem('players')) || [])
+const initialPlayers = Set(JSON.parse(window.localStorage.getItem('players')) || [])
 const players = (state = initialPlayers, action) => {
   switch (action.type) {
     case SET_PLAYERS:
-      return List(action.players)
+      return Set(action.players)
     default:
       return state
   }
