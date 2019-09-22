@@ -1,6 +1,8 @@
 require('webpack')
 const HtmlWebPackPlugin = require('html-webpack-plugin')
 const FaviconsWebpackPlugin = require('favicons-webpack-plugin')
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
+const CompressionPlugin = require('compression-webpack-plugin')
 const path = require('path')
 
 module.exports = {
@@ -48,13 +50,27 @@ module.exports = {
     new FaviconsWebpackPlugin({
       logo: './favicon.svg',
       favicons: {
-        start_url: ''
+        start_url: '',
+        theme_color: '#000'
       }
-    })
+    }),
+    new CompressionPlugin()
   ],
   devtool: 'inline-source-map',
   devServer: {
     historyApiFallback: true,
     publicPath: '/'
+  },
+  optimization: {
+    minimizer: [new UglifyJsPlugin()],
+    splitChunks: {
+      cacheGroups: {
+        commons: {
+          test: /[\\/]node_modules[\\/]/,
+          name: 'vendors',
+          chunks: 'all'
+        }
+      }
+    }
   }
 }
