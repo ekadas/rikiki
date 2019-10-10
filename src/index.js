@@ -2,6 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import { Provider } from 'react-redux'
 import { ConnectedRouter as Router } from 'connected-react-router/immutable'
+import * as OfflinePluginRuntime from 'offline-plugin/runtime'
 
 import { store, history } from './state/store'
 
@@ -17,3 +18,5 @@ ReactDOM.render(
   </Provider>,
   document.getElementById('root')
 )
+
+OfflinePluginRuntime.install()

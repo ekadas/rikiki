@@ -3,6 +3,7 @@ const HtmlWebPackPlugin = require('html-webpack-plugin')
 const FaviconsWebpackPlugin = require('favicons-webpack-plugin')
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 const CompressionPlugin = require('compression-webpack-plugin')
+const OfflinePlugin = require('offline-plugin')
 const path = require('path')
 
 module.exports = {
@@ -54,7 +55,8 @@ module.exports = {
         theme_color: '#000'
       }
     }),
-    new CompressionPlugin()
+    new CompressionPlugin(),
+    new OfflinePlugin()
   ],
   devtool: 'inline-source-map',
   devServer: {
