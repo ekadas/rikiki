@@ -51,9 +51,14 @@ module.exports = {
     new FaviconsWebpackPlugin({
       logo: './favicon.svg',
       favicons: {
-        start_url: '',
-        theme_color: '#000'
-      }
+        start_url: '.',
+        theme_color: '#541EB0',
+        appName: 'Rikiki',
+        appShortName: 'Rikiki',
+        appDescription: 'Helps you keep score in Rikiki',
+        background: '#541EB0'
+      },
+      prefix: './'
     }),
     new CompressionPlugin(),
     new OfflinePlugin()

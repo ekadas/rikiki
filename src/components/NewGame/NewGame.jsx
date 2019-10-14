@@ -115,7 +115,7 @@ class NewGame extends React.Component {
 
 NewGame.propTypes = {
   onCreateGame: PropTypes.func.isRequired,
-  players: ImmutablePropTypes.list.isRequired
+  players: ImmutablePropTypes.set.isRequired
 }
 
 const mapStateToProps = state => {
