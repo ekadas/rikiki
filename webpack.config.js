@@ -4,6 +4,7 @@ const FaviconsWebpackPlugin = require('favicons-webpack-plugin')
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 const CompressionPlugin = require('compression-webpack-plugin')
 const OfflinePlugin = require('offline-plugin')
+const GoogleFontsPlugin = require('@beyonk/google-fonts-webpack-plugin')
 const path = require('path')
 
 module.exports = {
@@ -16,7 +17,7 @@ module.exports = {
         use: { loader: 'babel-loader' }
       },
       {
-        test: /\.(scss|sass)$/,
+        test: /\.(scss)$/,
         use: [
           { loader: 'style-loader' },
           { loader: 'css-loader',
@@ -44,6 +45,12 @@ module.exports = {
   },
   mode: 'development',
   plugins: [
+    new GoogleFontsPlugin({
+      fonts: [{ family: 'Open Sans' }],
+      formats: ['woff', 'woff2'],
+      path: './',
+      filename: './fonts.css'
+    }),
     new HtmlWebPackPlugin({
       template: './src/index.html',
       filename: './index.html'

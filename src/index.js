@@ -8,7 +8,6 @@ import { store, history } from './state/store'
 
 import App from './components/App'
 import './index.scss'
-import './fonts.scss'
 
 ReactDOM.render(
   <Provider store={store}>

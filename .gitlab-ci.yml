@@ -1,7 +1,7 @@
 include:
   template: Dependency-Scanning.gitlab-ci.yml
 
-image: node:8.6.0
+image: node:12
 
 pages:
   stage: deploy
